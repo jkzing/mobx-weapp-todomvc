@@ -1,0 +1,7 @@
+<view class="root">
+    <button type="primary" bindtap="toggleComplete">切换完成</button>
+    <text>total completed: {{completed}}</text>
+    <text wx:for="{{todos}}"  wx:for-index="idx" wx:for-item="todo">
+        {{todo.id}} - {{todo.title}}: {{todo.completed ? 'completed' : 'not completed'}}
+    </text>
+</view>
