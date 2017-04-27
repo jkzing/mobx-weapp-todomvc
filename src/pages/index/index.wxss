@@ -1,3 +1,14 @@
 .root {
     font-size: 20px;
 }
+
+.todo-input {
+    display: flex;
+}
+.todo-input input {
+    flex: 1 1 0;
+}
+
+.todo-input button {
+    flex: 0 0 120rpx;
+}

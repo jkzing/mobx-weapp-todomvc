@@ -1,17 +1,16 @@
 import {observer} from 'mobx-weapp';
 
-let done = false;
-
-const mapState = store => {
+const mapState = ({todoStore}) => {
     return {
-        completed: store.todoStore.completedCount,
-        todos: store.todoStore.todos,
+        activated: todoStore.activeTodoCount,
+        completed: todoStore.completedCount,
+        todos: todoStore.todos,
     };
 }
 
 Page(observer(mapState)({
     data: {
-        name: 'zaihui',
+        todoInput: '',
     },
     onUpdate() {
         console.log('update');
@@ -21,12 +20,18 @@ Page(observer(mapState)({
         wx.showToast({title: '刷新成功'});
         wx.stopPullDownRefresh();
     },
-    addTodo(event) {
-        console.log(event);
-        this.$store.todoStore.addTodo(event.value);
+    inputChange({detail}) {
+        this.setData({
+            todoInput: detail.value,
+        });
     },
-    toggleComplete() {
-        done = !done;
-        this.$store.todoStore.toggleAll(done);
+    addTodo({detail}) {
+        if (!detail.value) return;
+        this.$store.todoStore.addTodo(detail.value);
+        this.setData({todoInput: ''});
+    },
+    toggleComplete({target}) {
+        let todo = target.dataset.todo;
+        this.$store.todoStore.toggleTodo(todo.id);
     }
 }))
