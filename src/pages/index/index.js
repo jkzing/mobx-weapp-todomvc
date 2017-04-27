@@ -1,4 +1,5 @@
 import {observer} from 'mobx-weapp';
+import {ALL_TODOS, ACTIVE_TODOS, COMPLETED_TODOS} from '../../constants';
 
 const mapState = ({todoStore}) => {
     return {
@@ -11,6 +12,7 @@ const mapState = ({todoStore}) => {
 Page(observer(mapState)({
     data: {
         todoInput: '',
+        selected: [], 
     },
     onUpdate() {
         console.log('update');
@@ -33,5 +35,22 @@ Page(observer(mapState)({
     toggleComplete({target}) {
         let todo = target.dataset.todo;
         this.$store.todoStore.toggleTodo(todo.id);
+    },
+    filterTodos({detail}) {
+        let todos = null;
+        switch (detail.value) {
+            case ALL_TODOS:
+                todos = this.$store.todoStore.todos;
+                break;
+            case ACTIVE_TODOS:
+                todos = this.$store.todoStore.activeTodos;
+                break;
+            case COMPLETED_TODOS:
+                todos = this.$store.todoStore.completedTodos;
+                break;
+            default:
+                todos = this.$store.todoStore.todos;
+        }
+        this.setData({todos});
     }
 }))

@@ -16,6 +16,14 @@ export default class TodoStore {
 		return this.todos.length - this.activeTodoCount;
 	}
 
+    @computed get activeTodos() {
+        return this.todos.filter(todo => !todo.completed);
+    }
+
+    @computed get completedTodos() {
+        return this.todos.filter(todo => todo.completed);
+    }
+
     addTodo (title) {
 		this.todos.push(new TodoModel(generateId(), title, false));
 	}

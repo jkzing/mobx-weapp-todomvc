@@ -18,15 +18,15 @@
   <view>
     {{activated}} items left
   </view>
-  <radio-group class="radio-group">
+  <radio-group class="radio-group" bindchange="filterTodos">
     <label class="radio">
-      <radio checked="true"/> all
+      <radio value="all" checked /> All
     </label>
     <label class="radio">
-      <radio checked="false"/> archive
+      <radio value="active" /> Active 
     </label>
     <label class="radio">
-      <radio checked="false"/> completed
+      <radio value="completed"/> Completed
     </label>
   </radio-group>
 </view>
