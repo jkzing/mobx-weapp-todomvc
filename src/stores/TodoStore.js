@@ -1,0 +1,45 @@
+import {observable, computed} from 'mobx';
+import {generateId} from '../utils';
+import TodoModel from '../models/TodoModel';
+
+export default class TodoStore {
+    @observable todos = [];
+
+	@computed get activeTodoCount() {
+		return this.todos.reduce(
+			(sum, todo) => sum + (todo.completed ? 0 : 1),
+			0
+		)
+	}
+
+	@computed get completedCount() {
+		return this.todos.length - this.activeTodoCount;
+	}
+
+    addTodo (title) {
+		this.todos.push(new TodoModel(generateId(), title, false));
+	}
+
+	toggleAll (checked) {
+		this.todos.forEach(
+			todo => todo.completed = checked
+		);
+	}
+
+	clearCompleted () {
+		this.todos = this.todos.filter(
+			todo => !todo.completed
+		);
+	}
+
+	toJS() {
+		return this.todos.map(todo => todo.toJS());
+	}
+
+	static fromJS(array) {
+		const todoStore = new TodoStore();
+		todoStore.todos = array.map(item => TodoModel.fromJS(todoStore, item));
+		return todoStore;
+	}
+
+};

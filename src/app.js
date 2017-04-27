@@ -1,9 +1,11 @@
-import {sleep} from './utils/utils';
-import request, {setCredentials} from './utils/wx-request';
+import request from './utils/wx-request';
 import {createStore, observer} from 'mobx-weapp';
-import configureStore from './store';
 
-configureStore();
+import TodoStore from './stores/TodoStore';
+
+createStore({
+    todoStore: TodoStore.fromJS([]),
+});
 
 App({
     async onLaunch() {

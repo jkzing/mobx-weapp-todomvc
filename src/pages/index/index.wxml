@@ -1,7 +1,28 @@
 <view class="root">
-    <button type="primary" bindtap="toggleComplete">切换完成</button>
-    <text>total completed: {{completed}}</text>
-    <text wx:for="{{todos}}"  wx:for-index="idx" wx:for-item="todo">
-        {{todo.id}} - {{todo.title}}: {{todo.completed ? 'completed' : 'not completed'}}
-    </text>
+  <view class="section">
+    <input 
+      placeholder="What needs to be done?" 
+      auto-focus
+      bindConfirm="addTodo"
+    />
+  </view>
+  <view class="section">
+    <label class="checkbox" wx:for="{{todos}}">
+      <checkbox value="x" checked="true"/> {{item.title}}
+    </label>
+  </view>
+  <view>
+    n items left
+  </view>
+  <radio-group class="radio-group">
+    <label class="radio">
+      <radio checked="true"/> all
+    </label>
+    <label class="radio">
+      <radio checked="true"/> archive
+    </label>
+    <label class="radio">
+      <radio checked="true"/> completed
+    </label>
+  </radio-group>
 </view>
