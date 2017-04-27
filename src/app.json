@@ -5,7 +5,7 @@
   "window": {
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#E95A3E",
-    "navigationBarTitleText": "Corgi",
+    "navigationBarTitleText": "Todos",
     "navigationBarTextStyle": "white",
     "enablePullDownRefresh": true
   }

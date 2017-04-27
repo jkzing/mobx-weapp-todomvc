@@ -1,5 +1,4 @@
 import {observer} from 'mobx-weapp';
-import { sleep } from '../../utils/utils';
 
 let done = false;
 
@@ -18,9 +17,6 @@ Page(observer(mapState)({
         console.log('update');
     },
     async onPullDownRefresh() {
-        await sleep(500);
-        console.log(this);
-        // addTodo('fuck wechat');
         this.$store.todoStore.addTodo('fuck wechat');
         wx.showToast({title: '刷新成功'});
         wx.stopPullDownRefresh();

@@ -7,17 +7,14 @@ configureStore();
 
 App({
     async onLaunch() {
-        try {
-            wx.showLoading({
-                title: '加载中',
-                mask: true,
-            });
-            const {
-                response,
-            } = await request('api/v1/auths/xxx/customer_get_openid/', {hawk: false});
-            wx.hideLoading();
-        } catch (error) {
-            console.error(error);
-        }
+        // try {
+        //     wx.showLoading({
+        //         title: '加载中',
+        //         mask: true,
+        //     });
+        //     wx.hideLoading();
+        // } catch (error) {
+        //     console.error(error);
+        // }
     }
 })
