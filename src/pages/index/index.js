@@ -9,7 +9,13 @@ const mapState = ({todoStore}) => {
     };
 }
 
-Page(observer(mapState)({
+const mapActions = ({todoStore}) => {
+    return {
+        clearCompleted: todoStore.clearCompleted.bind(todoStore),
+    }
+}
+
+Page(observer(mapState, mapActions)({
     data: {
         todoInput: '',
         selected: [], 

@@ -29,4 +29,5 @@
       <radio value="completed"/> Completed
     </label>
   </radio-group>
+  <button type="primary" bindtap="clearCompleted">Clear completed</button>
 </view>
