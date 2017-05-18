@@ -38,7 +38,8 @@ Page(observer(mapState, mapActions)({
         this.$store.todoStore.addTodo(detail.value);
         this.setData({todoInput: ''});
     },
-    toggleComplete({target}) {
+    toggleComplete({detail, target}) {
+        let id = detail.value[0];
         let todo = target.dataset.todo;
         this.$store.todoStore.toggleTodo(todo.id);
     },

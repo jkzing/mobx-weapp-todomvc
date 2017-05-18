@@ -35,7 +35,7 @@ export default class TodoStore {
 	}
 
     toggleTodo (id) {
-        let todo = this.todos.find(t => t.id === id);
+        let todo = this.todos.find(t => t.id == id);
         if (!todo) return;
         todo.toggle();
     }

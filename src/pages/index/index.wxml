@@ -5,29 +5,40 @@
       value="{{todoInput}}"
       bindinput="inputChange"
       bindconfirm="addTodo"
-      auto-focus
+      autofocus
     />
   </view>
-  <view class="todo" wx:for="{{todos}}" wx:key="{{item.id}}">
-    <button type="default" plain size="mini" bindtap="toggleComplete" data-todo="{{item}}">
-      <icon wx:if="{{item.completed}}" type="success" size="20"></icon>
-      <icon wx:if="{{!item.completed}}" type="waiting" size="20"></icon>
-    </button>
-    <text>{{item.title}}</text>
+  <scroll-view scroll-y class="todos-list">
+    <view class="{{item.completed ? 'todo completed' : 'todo'}}" wx:for="{{todos}}" wx:key="{{item.id}}">
+      <!--<button class="complete-button" type="default" plain size="mini" bindtap="toggleComplete" data-todo="{{item}}">
+        <view class="checked" wx:if="{{item.completed}}"></view>
+        <view class="unchecked" wx:if="{{!item.completed}}"></view>
+      </button>-->
+      <!--<checkbox value="{{item.completed}}" checked="{{item.completed}}"/>-->
+      <checkbox-group bindchange="toggleComplete" data-todo="{{item}}">
+        <label class="checkbox">
+          <checkbox value="{{item.id}}" checked="{{item.completed}}"/>
+        </label>
+      </checkbox-group>
+      <text>{{item.title}}</text>
+    </view>
+  </scroll-view>
+
+  <view class="footer">
+    <view class="left-items">
+      {{activated}} items left
+    </view>
+    <radio-group class="radio-group" bindchange="filterTodos">
+      <label class="radio">
+        <radio value="all" checked /> All
+      </label>
+      <label class="radio">
+        <radio value="active" /> Active 
+      </label>
+      <label class="radio">
+        <radio value="completed"/> Completed
+      </label>
+    </radio-group>
+    <button type="primary" bindtap="clearCompleted">Clear completed</button>
   </view>
-  <view>
-    {{activated}} items left
-  </view>
-  <radio-group class="radio-group" bindchange="filterTodos">
-    <label class="radio">
-      <radio value="all" checked /> All
-    </label>
-    <label class="radio">
-      <radio value="active" /> Active 
-    </label>
-    <label class="radio">
-      <radio value="completed"/> Completed
-    </label>
-  </radio-group>
-  <button type="primary" bindtap="clearCompleted">Clear completed</button>
 </view>
