@@ -39,6 +39,6 @@
         <radio value="completed"/> Completed
       </label>
     </radio-group>
-    <button type="primary" bindtap="clearCompleted">Clear completed</button>
+    <button type="primary" bindtap="clearCompleted" disabled="{{completed === 0}}">Clear completed</button>
   </view>
 </view>
