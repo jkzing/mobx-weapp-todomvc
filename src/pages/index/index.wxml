@@ -1,5 +1,7 @@
 <view class="root">
-  <view class="section todo-input">
+  <view class="todo-input">
+    <button class="toggle-all" plain>
+    </button>
     <input 
       placeholder="What needs to be done?" 
       value="{{todoInput}}"
@@ -10,11 +12,6 @@
   </view>
   <scroll-view scroll-y class="todos-list">
     <view class="{{item.completed ? 'todo completed' : 'todo'}}" wx:for="{{todos}}" wx:key="{{item.id}}">
-      <!--<button class="complete-button" type="default" plain size="mini" bindtap="toggleComplete" data-todo="{{item}}">
-        <view class="checked" wx:if="{{item.completed}}"></view>
-        <view class="unchecked" wx:if="{{!item.completed}}"></view>
-      </button>-->
-      <!--<checkbox value="{{item.completed}}" checked="{{item.completed}}"/>-->
       <checkbox-group bindchange="toggleComplete" data-todo="{{item}}">
         <label class="checkbox">
           <checkbox value="{{item.id}}" checked="{{item.completed}}"/>
