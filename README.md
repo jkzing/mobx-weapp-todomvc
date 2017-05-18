@@ -2,4 +2,4 @@
 
 一个用`mobx-weapp`实现的TodoMVC小程序
 
-![](./example.png)
+![](https://github.com/jkzing/mobx-weapp-todomvc/blob/master/example.jpeg)
