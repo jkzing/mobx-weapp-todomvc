@@ -12,6 +12,7 @@ const mapState = ({todoStore}) => {
 const mapActions = ({todoStore}) => {
     return {
         clearCompleted: todoStore.clearCompleted.bind(todoStore),
+        toggleAll: todoStore.toggleAll.bind(todoStore),
     }
 }
 

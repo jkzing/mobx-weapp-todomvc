@@ -28,9 +28,10 @@ export default class TodoStore {
 		this.todos.push(new TodoModel(generateId(), title, false));
 	}
 
-	toggleAll (checked) {
+	toggleAll () {
+		let allCompleted = this.todos.length === this.completedCount;
 		this.todos.forEach(
-			todo => todo.completed = checked
+			todo => todo.completed = !allCompleted
 		);
 	}
 

@@ -1,6 +1,6 @@
 <view class="root">
   <view class="todo-input">
-    <button class="{{todos.length === completed ? 'toggle-all completed' : 'toggle-all'}}" plain>
+    <button class="{{todos.length === completed ? 'toggle-all completed' : 'toggle-all'}}" plain bindtap="toggleAll">
     </button>
     <input 
       placeholder="What needs to be done?" 
